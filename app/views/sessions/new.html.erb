@@ -1,0 +1,19 @@
+<h3>Login</h3>
+
+<div><%= notice %></div>
+
+<%= form_with url: sessions_path do |form| %>
+  <div>
+    <lable for="email">Email</label>
+    <%= form.text_field :email %>
+  </div>
+    
+  <div>
+    <lable for="password">Password</label>
+    <%= form.password_field :password %>
+  </div>
+    
+  <%= form.submit 'Login' %>
+<% end %>
+
+<%= link_to 'Logout', logout_path, method: :delete %>
