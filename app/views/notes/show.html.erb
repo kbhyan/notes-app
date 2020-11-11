@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= @note.title %></h3>
+<small>Created: <%= @note.created_at %></small>
+<small>Last Update: <%= @note.created_at %></small>
+<p><%= @note.body %></p>
+
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>

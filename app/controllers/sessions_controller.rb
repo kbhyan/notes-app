@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
     # #authenticate() will return the user object if the password is correct
     if user&.authenticate(params[:password])&.present?
       session[:current_user_id] = user.id
-      # TODO: later redirect the user to Notes page
-      login_redirect 'Yay! logged in successfully!'
+      redirect_to notes_path
     else
       login_redirect 'Sorry, wrong email and/or password!'
     end
