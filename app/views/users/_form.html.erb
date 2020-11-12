@@ -1,9 +1,9 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+    <div class="alert alert-danger">
+      <h5>
         Please check the following <%= pluralize(user.errors.count, "error") %>
-      </h2>
+      </h5>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
@@ -13,20 +13,20 @@
     </div>
   <% end %>
 
-  <div>
-    <lable for="name">Full Name</label>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <lable for="name" class="text-muted">Full Name</label>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <lable for="email">Email</label>
-    <%= form.text_field :email %>
+  <div class="form-group">
+    <lable for="email" class="text-muted">Email</label>
+    <%= form.text_field :email, class: 'form-control' %>
   </div>
     
-  <div>
-    <lable for="password">Password</label>
-    <%= form.text_field :password %>
+  <div class="form-group">
+    <lable for="password" class="text-muted">Password</label>
+    <%= form.password_field :password, class: 'form-control' %>
   </div>
     
-  <%= form.submit 'Submit' %>
+  <%= form.submit 'Submit', class: 'btn btn-success' %>
 <% end %>

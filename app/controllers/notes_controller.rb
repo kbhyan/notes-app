@@ -1,6 +1,5 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :split_tags, only: :create
 
   # tagging filter constants
   ALL_TAGS = 'All Tags'
@@ -76,10 +75,6 @@ class NotesController < ApplicationController
 
     def tags
       @tags ||= user_notes.select(:tags).pluck(:tags).flatten.uniq
-    end
-
-    def split_tags
-      note_params[:tags] = note_params[:tags].split(',')
     end
 
     def note_params

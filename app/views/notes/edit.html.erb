@@ -1,6 +1,8 @@
-<h1>Editing Note</h1>
+<div class="mb-3">
+  <%= link_to 'Dashboard', notes_path, class: 'btn btn-secondary text-white' %>
+  <%= link_to 'Show', @note, class: 'btn btn-secondary text-white' %>
+</div>
+
+<h1>Edit Note</h1>
 
 <%= render 'form', note: @note %>
-
-<%= link_to 'Show', @note %> |
-<%= link_to 'Back', notes_path %>

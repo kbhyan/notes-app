@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:new, :create]
 
   # GET /users/:id
   def show
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created'
+      session[:current_user_id] = @user.id
+      redirect_to notes_path
     else
       render :new
     end
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
   # DELETE /users/:id
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'Account was successfully deleted'
+    redirect_to new_user_path, notice: 'Account was successfully deleted'
   end
 
   private

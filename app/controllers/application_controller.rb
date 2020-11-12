@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(id)
 
     rescue ActiveRecord::RecordNotFound
-      redirect_to login_path, notice: 'Not authorized, please login first'
+      redirect_to login_path, alert: 'Please login first'
     end
 end

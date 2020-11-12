@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   end
 
   private
-    def login_redirect(notice)
-      redirect_to login_path, notice: notice
+    def login_redirect(alert)
+      redirect_to login_path, alert: alert
     end
 end

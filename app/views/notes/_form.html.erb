@@ -1,7 +1,7 @@
-<%= form_with(model: note, local: true) do |form| %>
+<%= form_with model: note, local: true do |form| %>
   <% if note.errors.any? %>
-    <div id="error_explanation">
-      <h2>Please check the following <%= pluralize(note.errors.count, "error") %></h2>
+    <div class="alert alert-danger">
+      <h5>Please check the following <%= pluralize(note.errors.count, "error") %></h5>
 
       <ul>
         <% note.errors.full_messages.each do |message| %>
@@ -11,20 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <lable for="title">Title</label>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <lable for="title" class="text-muted">Title</label>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div>
-    <lable for="body">Take a note...</label>
-    <%= form.text_area :body %>
+  <div class="form-group">
+    <lable for="body" class="text-muted">Take a note...</label>
+    <%= form.text_area :body, class: 'form-control' %>
   </div>
     
-  <div>
-    <lable for="tags">Tags (comma separated)</label>
-    <%= form.text_field :tags %>
+  <div class="form-group">
+    <lable for="tags" class="text-muted">Tags (comma separated)</label>
+    <%= form.text_field :tags, value: form.object.tags.join(', '), class: 'form-control' %>
   </div>
     
-  <%= form.submit 'Submit' %>
+  <%= form.submit 'Submit', class: 'btn btn-success' %>
 <% end %>

@@ -2,5 +2,22 @@
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="mt-5">
+  <%=
+    link_to(
+      'Logout',
+      logout_path,
+      method: :delete,
+      class: 'btn btn-warning text-black'
+    )
+  %>
+  <%=
+    link_to(
+      'Delete Account',
+      @user,
+      method: :delete,
+      data: { confirm: 'Do you really want to delete your account?' },
+      class: 'btn btn-danger text-white'
+    )
+  %>
+</div>
