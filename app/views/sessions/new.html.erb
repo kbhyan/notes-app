@@ -2,7 +2,7 @@
 
 <div><%= notice %></div>
 
-<%= form_with url: sessions_path do |form| %>
+<%= form_with url: sessions_path, method: :post do |form| %>
   <div>
     <lable for="email">Email</label>
     <%= form.text_field :email %>

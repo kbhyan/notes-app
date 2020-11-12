@@ -1,6 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Notes</h1>
+<p>You can filter notes by tag or search them</p>
+
+<%= form_tag notes_path, method: :get do %>
+  <div>
+    <lable for="tag">Select Tag</label>
+    <%= select_tag :tag, options_for_select(@all_tags, params[:tag]) %>
+  </div>
+
+  <div>
+    <lable for="search">Search Notes</label>
+    <%= text_field_tag :search, params[:search], placeholder: 'Enter note title or body...' %>
+    <%= submit_tag 'Search' %>
+  </div>
+<% end %>
 
 <table>
   <thead>
