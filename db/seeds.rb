@@ -1,7 +1,7 @@
 # heads up! all your development data will be lost
 User.destroy_all
 
-user = User.create(name: 'Khaled Bhyan', email: 'kbhyan@gmail.com', password: 'kkk123')
+user = User.create(name: 'Khaled Bhyan', email: 'user@mail.com', password: 'uuu123')
 
 100.times do
   # these tags will be shared with all notes
