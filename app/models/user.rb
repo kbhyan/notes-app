@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # validations
   validates_presence_of :name, :email
   validates :name, length: { minimum: 2 }
+  validates :password, length: { minimum: 6, maximum: 15 }
   validates :email, uniqueness: true,
                     format: { with: EMAIL_REGEX, message: 'Please enter a valid Email' } 
 end
