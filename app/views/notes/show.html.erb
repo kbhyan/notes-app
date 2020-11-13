@@ -1,0 +1,40 @@
+<% if notice.present? %>
+  <div class="alert alert-secondary"><%= notice %></div>
+<% end %>
+
+<div class="mb-5">
+  <h1><%= @note.title %></h1>
+  <p class="text-muted m-0">Created: <%= @note.created_at.strftime('%d/%m/%Y %I:%M %p') %></p>
+  <p class="text-muted m-0">Last Update: <%= @note.updated_at.strftime('%d/%m/%Y %I:%M %p') %></p>
+
+  <div class="mt-2">
+    <% if @note.tags.empty? %>
+      <%=
+        link_to(
+          'Untagged',
+          notes_path(tag: 'Untagged'),
+          class: 'badge badge-primary text-white font-weight-light'
+        )
+      %>
+    <% end %>
+
+    <% @note.tags.each do |tag| %>
+      <small>
+        <%=
+          link_to(
+            tag,
+            notes_path(tag: tag),
+            class: 'badge badge-primary text-white font-weight-light'
+          )
+        %>
+      </small>
+    <% end %>
+  </div>
+</div>
+
+<p style="font-size: 16px"><%= @note.body %></p>
+
+<div class="mt-5">
+  <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-secondary text-white' %>
+  <%= link_to 'Dashboard', notes_path, class: 'btn btn-secondary text-white' %>
+</div>

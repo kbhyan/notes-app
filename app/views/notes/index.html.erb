@@ -1,0 +1,69 @@
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<div>
+  <div>
+    <h1>Dashboard</h1>
+    <p class="text-muted">Select tag or type note title or body and click search</p>
+  </div>
+
+  <%= link_to 'New Note', new_note_path, class: 'btn btn-primary text-white' %>
+</div>
+
+<%= form_tag notes_path, method: :get, class: 'form-inline' do %>
+  <div class="form-group m-4">
+    <lable for="tag" class="label label-default text-muted">Select Tag</label>
+    <%=
+      select_tag(
+        :tag,
+        options_for_select(@all_tags, params[:tag]),
+        class: 'form-control form-control-sm'
+      )
+    %>
+  </div>
+
+  <div class="form-group">
+    <lable for="search" class="label label-default text-muted">Search Notes</label>
+    <%=
+      text_field_tag(
+        :search,  
+        params[:search],
+        placeholder: 'Enter note title or body...',
+        class: 'form-control form-control-sm m-1'
+      )
+    %>
+  </div>
+  <%= submit_tag 'Filter', class: "btn btn-primary" %>
+<% end %>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Title</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody style="font-size: 18px">
+    <% @notes.each do |note| %>
+      <tr scope="row">
+        <td><%= link_to note.title, note, class: 'card-link trans-bg-link' %></td>
+        <td><%= link_to 'Edit', edit_note_path(note), class: 'card-link trans-bg-link' %></td>
+        <td>
+          <%=
+            link_to(
+              'Delete',
+              note,
+              method: :delete, 
+              data: { confirm: 'Are you sure?' },
+              class: 'card-link  trans-bg-link'
+            )
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @notes %>

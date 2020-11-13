@@ -1,0 +1,32 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <h5>
+        Please check the following <%= pluralize(user.errors.count, "error") %>
+      </h5>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <lable for="name" class="text-muted">Full Name</label>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <lable for="email" class="text-muted">Email</label>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+    
+  <div class="form-group">
+    <lable for="password" class="text-muted">Password</label>
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+    
+  <%= form.submit 'Submit', class: 'btn btn-success' %>
+<% end %>

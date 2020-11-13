@@ -1,0 +1,34 @@
+<% if notice.present? %>
+  <div class="alert alert-secondary"><%= notice %></div>
+<% end %>
+
+<h1><%= @user.name %></h1>
+<p style="font-size: 16px"><%= @user.email %></p>
+<span class="text-muted">Joined: <%= @user.created_at.strftime('%d/%m/%Y %I:%M %p') %></span>
+
+<div class="mt-5">
+  <%=
+    link_to(
+      'Edit Profile',
+      edit_user_path(@user),
+      class: 'btn btn-secondary text-white'
+    )
+  %>
+  <%=
+    link_to(
+      'Logout',
+      logout_path,
+      method: :delete,
+      class: 'btn btn-warning text-black'
+    )
+  %>
+  <%=
+    link_to(
+      'Delete Account',
+      @user,
+      method: :delete,
+      data: { confirm: 'Do you really want to delete your account?' },
+      class: 'btn btn-danger text-white'
+    )
+  %>
+</div>

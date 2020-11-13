@@ -1,0 +1,18 @@
+<% if notice.present? %>
+  <div class="alert alert-secondary"><%= notice %></div>
+<% end %>
+
+<h1>Register</h1>
+
+<%= render 'form', user: @user %>
+
+<div class="row mt-5">
+  <span class="m-0 mr-2 align-baseline text-muted">Already have account?</span>
+  <%=
+    link_to(
+      'Login',
+      login_path,
+      class: 'badge badge-primary font-weight-light text-white'
+    )
+  %>
+</div>
